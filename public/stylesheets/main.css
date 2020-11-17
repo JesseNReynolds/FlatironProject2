@@ -91,6 +91,18 @@
     margin-top: 20px;
     padding-top: 20px;
   }
+
+  .bookOverviewContainer{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .bookOverviewCard{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+  }
 }
 
 @media screen and (max-width: 600px) {

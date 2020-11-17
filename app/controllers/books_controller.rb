@@ -33,7 +33,13 @@ class BooksController < ApplicationController
 
   # GET: /books/5/edit
   get "/books/:id/edit" do
-    erb :"/books/edit"
+    book = Book.find(params[:id])
+    if book.user_id = Helper.current_user
+      @book = book
+      erb :"/books/edit"
+    else
+      "You can't edit books you don't own."
+    end
   end
 
   # PATCH: /books/5
