@@ -92,17 +92,39 @@
     padding-top: 20px;
   }
 
-  .bookOverviewContainer{
+  .bookOverviewContainer {
     display: flex;
     flex-wrap: wrap;
   }
 
-  .bookOverviewCard{
+  .bookOverviewCard {
     border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 10px;
     margin: 5px;
   }
+
+  .userBookCard {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+  }
+
+  .topWrapper {
+    float: right;
+  }
+
+  #userTab {
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 10px;
+    padding-bottom: 0px;
+    margin: 5px;
+    line-height: .2;
+    text-align: right;
+  }
+
 }
 
 @media screen and (max-width: 600px) {

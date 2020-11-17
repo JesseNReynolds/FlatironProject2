@@ -1,1 +1,20 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Edit <%= @book.title %></h1>
+<form method='post' action='/books/<%= @book.id %>'>
+    <input type='hidden' name='_method' value="PATCH">
+    <label>Title:
+    <input type='text' name='book[title]' value='<%= @book.title %>'>
+    </label>
+    <br>
+    <label>Author:
+    <input type='text' name='book[author]' value='<%= @book.author %>'>
+    </label>
+    <br>
+    <label>Year published:
+    <input type='number' name='book[published]' value='<%= @book.published %>'>
+    </label>
+    <br>
+    <input type='submit' value='Update'>
+
+
+<h2>To delete this book, click <a href='/books/<%= @book.id %>/delete'>here</a>.</h2>
+</form>

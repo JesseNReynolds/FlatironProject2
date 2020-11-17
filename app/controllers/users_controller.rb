@@ -7,6 +7,16 @@ class UsersController < ApplicationController
     erb :"/users/index"
   end
 
+  get "/users/login" do
+
+    erb :"/users/login"
+  end
+
+  get 'users/logout' do
+    session.clear
+    redirect to '/'
+  end
+
   post "/users/login" do
     user = User.find_by(username: params[:user][:username])
     if user && user.authenticate(params[:user][:password])
@@ -46,6 +56,7 @@ class UsersController < ApplicationController
   # GET: /users/5
   get "/users/:id" do
     @user = User.find(params[:id])
+    @user_books = Book.all.select{|b| b.user_id == @user.id}
     if @user.id == Helper.current_user(session).id
       erb :"/users/my_account"
     else

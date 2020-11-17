@@ -1,0 +1,6 @@
+<h1>Delete <%= @book.title %>?</h1>
+<h1>Deleting this book cannot be undone!</h1>
+<form method='post' action='/books/<%= @book.id %>'>
+    <input type='hidden' name='_method' value="DELETE">
+    <input type='submit' value="Yes, delete this book.">
+</form>

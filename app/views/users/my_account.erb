@@ -1,3 +1,11 @@
 <h1>Welcome, <%= @user.username %> </h1>
-<h3> Click <a href='/users/edit'>here</a> to edit your account.<h3>
-Should show users books.
+<h3>Click <a href='/users/edit'>here</a> to edit your account.<h3>
+<h3>Click <a href='/books/new'>here</a> to add a book to your trade-library.</h3>
+<% @user_books.each do |b|%>
+    <div class='userBookCard'>
+        <h2>"<%= b.title %>"</h2>
+        <h5>By: <%= b.author %></h5>
+        <h5>Published: <%= b.published %></h5>
+        <a href='/books/<%= b.id %>/edit'>Edit this book</a>
+    </div>
+<% end %>

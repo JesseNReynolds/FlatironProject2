@@ -7,16 +7,29 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
-    <title>Bookswap</title>
+    <title>BookSwap</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
-    <div class="wrapper">
 
-        <%= yield %>
+    <div class="wrapper">
+      <div class='topWrapper'>
+        <div id="userTab">
+        <% if Helper.is_logged_in?(session) %>
+          <% @current_user = Helper.current_user(session) %>
+          <p>You're logged in as: <a href='/users/<%= @current_user.id %>'><%= @current_user.username %></a>.</p>
+          <p><a href='/users/logout'>Log out</a></p>
+        <% else %>
+          <p><a href='/users/login'>Log in</a></p>
+          <p><a href='/users/new'>Sign up</a></p>
+        <% end %>
+        </div>
+      </div>
+
+      <%= yield %>
 
       <footer class="branding">
         <small>&copy; 2020 <strong>BookSwap</strong></small>

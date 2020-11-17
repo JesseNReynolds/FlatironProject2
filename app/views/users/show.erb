@@ -1,2 +1,9 @@
 <h1><%= @user.username %></h1>
-this should have a list of the users books!
+<% @user_books.each do |b|%>
+    <div class='userBookCard'>
+        <h2>"<%= b.title %>"</h2>
+        <h5>By: <%= b.author %></h5>
+        <h5>Published: <%= b.published %></h5>
+        You should be able to start a trade request here!
+    </div>
+<% end %>

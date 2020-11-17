@@ -33,9 +33,8 @@ class BooksController < ApplicationController
 
   # GET: /books/5/edit
   get "/books/:id/edit" do
-    book = Book.find(params[:id])
-    if book.user_id = Helper.current_user
-      @book = book
+    @book = Book.find(params[:id])
+    if @book.user_id == Helper.current_user(session).id
       erb :"/books/edit"
     else
       "You can't edit books you don't own."
@@ -44,11 +43,23 @@ class BooksController < ApplicationController
 
   # PATCH: /books/5
   patch "/books/:id" do
-    redirect "/books/:id"
+    Book.find(params[:id]).update(params[:book])
+    redirect "/books/#{params[:id]}"
+  end
+
+  get "/books/:id/delete" do
+    @book = Book.find(params[:id])
+    if @book.user_id == Helper.current_user(session).id
+      erb :"/books/delete"
+    else
+      "You cannot delete books you don't own."
+    end
+
   end
 
   # DELETE: /books/5/delete
   delete "/books/:id/delete" do
     redirect "/books"
   end
+  
 end
