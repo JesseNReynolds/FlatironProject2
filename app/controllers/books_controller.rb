@@ -2,16 +2,25 @@ class BooksController < ApplicationController
 
   # GET: /books
   get "/books" do
+    @books = Book.all
     erb :"/books/index"
   end
 
   # GET: /books/new
   get "/books/new" do
-    erb :"/books/new"
+    if Helper.is_logged_in?(session)
+      erb :"/books/new"
+    else
+      "Please log in to add a book to your trade-library."
+    end
   end
 
   # POST: /books
   post "/books" do
+    hash_to_pass = params[:book]
+    hash_to_pass["user_id"] = session[:user_id]
+    new_book = Book.create(hash_to_pass)
+
     redirect "/books"
   end
 

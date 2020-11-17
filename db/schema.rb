@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(version: 20201116202638) do
 
   create_table "books", force: :cascade do |t|
-    t.string "isbn"
-    t.string "author"
-    t.string "title"
-    t.string "published"
+    t.string  "author"
+    t.string  "title"
+    t.string  "published"
+    t.integer "user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -25,13 +25,6 @@ ActiveRecord::Schema.define(version: 20201116202638) do
     t.integer  "recipient_id"
     t.datetime "sent"
     t.text     "content"
-  end
-
-  create_table "user_books", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "book_id"
-    t.integer "condition"
-    t.string  "status"
   end
 
   create_table "users", force: :cascade do |t|

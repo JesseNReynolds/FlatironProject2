@@ -6,6 +6,5 @@ end
 
 run ApplicationController
 use MessagesController
-use UserBooksController
 use BooksController
 use UsersController

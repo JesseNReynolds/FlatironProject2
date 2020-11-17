@@ -1,1 +1,8 @@
-<h1>This is the Model's index page.</h1>
+<% @books.each do |b|%>
+    <div> 
+    <h4><%= b.title %></h4>
+    <h5>By: <%= b.author %></h5>
+    <h5>Published: <%= b.published %></h5>
+    </div>
+    <br>
+<% end %>

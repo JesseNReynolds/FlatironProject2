@@ -1,5 +1,5 @@
 implement controllers and views:
-    user
+    -user
     book
     user_book
     messages

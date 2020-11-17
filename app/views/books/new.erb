@@ -1,1 +1,16 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h1>Add a book</h1>
+<form method='post' action='/books'>
+    <label>Author:
+    <input type='text' name='book[author]'>
+    </label>
+    <br>
+    <label>Title:
+    <input type='text' name='book[title]'>
+    </label>
+    <br>
+    <label>Date published:
+    <input type='text' name='book[published]'>
+    </label>
+    <br>
+    <input type='submit' value="Add book">
+</form>
