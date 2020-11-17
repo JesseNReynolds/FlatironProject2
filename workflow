@@ -3,3 +3,4 @@ implement controllers and views:
     book
     user_book
     messages
+    add logout button if user is logged in on layout.erb

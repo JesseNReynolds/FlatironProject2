@@ -1,16 +1,24 @@
-<h1>Insert the form to create a new instance of your model.</h1>
-<form method='post' action='/users/new'>
+<h1>Sign up:</h1>
+<form method='post' action='/users'>
     <label>Email address:
-        <input type='text' name='email'> 
+        <input type='text' name='email'>
     </label>
+    <br>
+    <br>
     <label>Username:
         <input type='text' name='username'> 
     </label>
+    <br>
+    <br>
     <label>Mailing address:
-        <input type='text' name='mailing_address'> 
+        <input type='text' name='mailing_address'>
     </label>
+    <br>
+    <p id='mailNotice'>We won't show this to anyone unless you agree to trade with them!</p>
     <label>Password:
         <input type='text' name='password'> 
     </label>
+    <br>
+    <br>
     <input type='submit' value='Create account'>
 </form>

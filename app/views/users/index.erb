@@ -1,1 +1,8 @@
-<h1>This is the Model's index page.</h1>
+<h1>All BookSwap users:</h1>
+<ul>
+    <% @users.each do |u|%>
+    <li>
+        <a href='users/<%= u.id %>'><%= u.username %></a>
+    </li>
+    <% end %>
+</ul>

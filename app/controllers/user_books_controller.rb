@@ -2,12 +2,12 @@ class UserBooksController < ApplicationController
 
   # GET: /user_books
   get "/user_books" do
-    erb :"/user_books/index.html"
+    erb :"/user_books/index"
   end
 
   # GET: /user_books/new
   get "/user_books/new" do
-    erb :"/user_books/new.html"
+    erb :"/user_books/new"
   end
 
   # POST: /user_books
@@ -17,12 +17,12 @@ class UserBooksController < ApplicationController
 
   # GET: /user_books/5
   get "/user_books/:id" do
-    erb :"/user_books/show.html"
+    erb :"/user_books/show"
   end
 
   # GET: /user_books/5/edit
   get "/user_books/:id/edit" do
-    erb :"/user_books/edit.html"
+    erb :"/user_books/edit"
   end
 
   # PATCH: /user_books/5

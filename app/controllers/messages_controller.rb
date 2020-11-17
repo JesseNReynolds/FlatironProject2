@@ -2,12 +2,12 @@ class MessagesController < ApplicationController
 
   # GET: /messages
   get "/messages" do
-    erb :"/messages/index.html"
+    erb :"/messages/index"
   end
 
   # GET: /messages/new
   get "/messages/new" do
-    erb :"/messages/new.html"
+    erb :"/messages/new"
   end
 
   # POST: /messages
@@ -17,12 +17,12 @@ class MessagesController < ApplicationController
 
   # GET: /messages/5
   get "/messages/:id" do
-    erb :"/messages/show.html"
+    erb :"/messages/show"
   end
 
   # GET: /messages/5/edit
   get "/messages/:id/edit" do
-    erb :"/messages/edit.html"
+    erb :"/messages/edit"
   end
 
   # PATCH: /messages/5
