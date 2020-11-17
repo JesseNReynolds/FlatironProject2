@@ -1,4 +1,4 @@
-<h1>Add a book</h1>
+<h1>Add a book to your trade-library</h1>
 <form method='post' action='/books'>
     <label>Author:
     <input type='text' name='book[author]'>
@@ -8,8 +8,8 @@
     <input type='text' name='book[title]'>
     </label>
     <br>
-    <label>Date published:
-    <input type='text' name='book[published]'>
+    <label>Year published:
+    <input type='number' name='book[published]'>
     </label>
     <br>
     <input type='submit' value="Add book">

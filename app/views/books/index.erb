@@ -1,8 +1,9 @@
 <% @books.each do |b|%>
-    <div> 
+    <div class="bookOverviewCard"> 
     <h4><%= b.title %></h4>
     <h5>By: <%= b.author %></h5>
     <h5>Published: <%= b.published %></h5>
+    <a href='/books/<%= b.id %>'>View this book</a>
     </div>
     <br>
 <% end %>

@@ -17,15 +17,17 @@ class BooksController < ApplicationController
 
   # POST: /books
   post "/books" do
-    hash_to_pass = params[:book]
-    hash_to_pass["user_id"] = session[:user_id]
-    new_book = Book.create(hash_to_pass)
-
+    # hash_to_pass = params[:book]
+    # hash_to_pass["user_id"] = session[:user_id]
+    # new_book = Book.create(hash_to_pass)
+    Helper.current_user.books.build(params[:book]).save
     redirect "/books"
   end
 
   # GET: /books/5
   get "/books/:id" do
+    @book = Book.find(params[:id])
+    @owner = User.find(@book.user_id)
     erb :"/books/show"
   end
 
