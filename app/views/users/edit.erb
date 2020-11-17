@@ -2,12 +2,14 @@
 <form method='post' action='/users/<%= @user.id %>'>
     <input type='hidden' name='_method' value="PATCH">
     <label>Email:
-    <input type='text' value="<%= @user.email%>" name='email'>
+    <input type='text' value="<%= @user.email%>" name='user[email]'>
     </label>
     <br>
     <label>Mailing address:
-    <input type='text' value="<%= @user.mailing_address%>" name='mailing_address'>
+    <input type='text' value="<%= @user.mailing_address%>" name='user[mailing_address]'>
     </label>
     <br>
     <input type='submit' value='Update'>
+
+<h6 id='deleteWarning'>If you want to delete your account, click <a href='/users/<%= @user.id  %>/delete'>here</a>.</h6>
 </form>

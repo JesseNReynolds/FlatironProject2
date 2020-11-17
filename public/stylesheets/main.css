@@ -35,6 +35,11 @@
     color: red;
   }
 
+  #deleteWarning {
+    font-weight: bolder;
+    color: red;
+  }
+
   h1 {
     font-size: 36px;
     line-height: 54px;

@@ -1,0 +1,5 @@
+<form method='post' action='/users/<%= @user.id %>/delete'>
+    <input type='hidden' name='_method' value="DELETE">
+    <h3 id="deleteWarning">Click the button to delete; but know that this cannot be undone!</h3>
+    <input type='submit' value="Delete">
+</form>

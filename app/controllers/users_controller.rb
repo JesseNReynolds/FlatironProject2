@@ -7,6 +7,16 @@ class UsersController < ApplicationController
     erb :"/users/index"
   end
 
+  post "/users/login" do
+    user = User.find_by(username: params[:user][:username])
+    if user && user.authenticate(params[:user][:password])
+      session[:user_id] = user.id
+      redirect "/users/#{user.id}"
+    else
+      "Login error, unknown username and/or password."
+    end
+  end
+
   # GET: /users/new
   get "/users/new" do
     erb :"/users/new"
@@ -35,8 +45,8 @@ class UsersController < ApplicationController
   
   # GET: /users/5
   get "/users/:id" do
-    @user = User.find_by(params)
-    if @user.id == Helpers.current_user(session).id
+    @user = User.find(params[:id])
+    if @user.id == Helper.current_user(session).id
       erb :"/users/my_account"
     else
       erb :"/users/show"
@@ -45,13 +55,20 @@ class UsersController < ApplicationController
 
   # PATCH: /users/5
   patch "/users/:id" do
-    user = User.find_by(id => :id)
-    user.update(params)
+    # binding.pry
+    user = User.find_by(:id => params[:id])
+    user.update(params["user"])
     redirect "/users/:id"
   end
 
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
-    redirect "/users"
+    redirect "/welcome"
   end
+  
+  get "/users/:id/delete" do
+    @user = Helper.current_user(session)
+    erb :"/users/delete"
+  end
+
 end
