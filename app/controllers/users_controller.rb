@@ -52,6 +52,21 @@ class UsersController < ApplicationController
     @user = Helper.current_user(session)
     erb :"/users/edit"
   end
+
+  get "/users/my_library" do
+    if session[:user_id]
+      @library = Book.all.select{|b| b.user_id == Helper.current_user(session).id}
+      erb :"/users/my_library"
+    else
+      "You must log in to view your library."
+    end
+
+  end
+
+  get "/users/others/books" do
+    @other_users_books = Book.all.select{|b| b.user_id != Helper.current_user(session).id}
+    erb :"/users/available_books"
+  end
   
   # GET: /users/5
   get "/users/:id" do
@@ -85,5 +100,6 @@ class UsersController < ApplicationController
     @user = Helper.current_user(session)
     erb :"/users/delete"
   end
+
 
 end

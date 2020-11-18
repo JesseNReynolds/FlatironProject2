@@ -59,7 +59,13 @@ class BooksController < ApplicationController
 
   # DELETE: /books/5/delete
   delete "/books/:id" do
+    Book.find(params:[id]).delete
     redirect "/books"
   end
   
+  # get "/users/:id/books" do
+  #   @books = Book.all
+  #   erb :"/users/books"
+  # end
+
 end

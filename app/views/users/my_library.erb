@@ -1,0 +1,10 @@
+<h1>Your trade library</h1>
+<% @library.each do |b| %>
+    <div class="bookOverviewCard"> 
+    <h3><%= b.title %></h3>
+    <h5>By: <%= b.author %></h5>
+    <h5>Published: <%= b.published %></h5>
+    <h5>Owned by: <%= User.find(b.user_id).username %>
+    <a href='/books/<%= b.id %>/edit'>Edit this book</a>
+    </div>
+<% end %>
