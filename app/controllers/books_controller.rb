@@ -20,7 +20,7 @@ class BooksController < ApplicationController
     # hash_to_pass = params[:book]
     # hash_to_pass["user_id"] = session[:user_id]
     # new_book = Book.create(hash_to_pass)
-    Helper.current_user.books.build(params[:book]).save
+    Helper.current_user(session).books.build(params[:book]).save
     redirect "/books"
   end
 
@@ -58,7 +58,7 @@ class BooksController < ApplicationController
   end
 
   # DELETE: /books/5/delete
-  delete "/books/:id/delete" do
+  delete "/books/:id" do
     redirect "/books"
   end
   

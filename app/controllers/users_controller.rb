@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     erb :"/users/login"
   end
 
-  get 'users/logout' do
+  get '/users/logout' do
     session.clear
     redirect to '/'
   end
