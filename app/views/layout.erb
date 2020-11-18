@@ -12,28 +12,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
+
+    <div class='navWrapper'>
+      
+      <% if Helper.is_logged_in?(session) %>
+        <% @current_user = Helper.current_user(session) %>
+      <div>
+      My Trade Library
+      </div>
+      <div>
+      </div>
+      <div>
+      </div>
+      <div id="userTab">
+        <p>You're logged in as: <a href='/users/<%= @current_user.id %>'><%= @current_user.username %></a>.</p>
+        <p><a href='/users/logout'>Log out</a></p>
+      </div>
+
+      <% else %>
+      <div id="userTab">
+        <p><a href='/users/login'>Log in</a></p>
+        <p><a href='/users/new'>Sign up</a></p>
+      </div>
+      <% end %>
+    </div>
+
   </head>
   <body>
 
     <div class="wrapper">
-      <div class='topWrapper'>
-        <div id="userTab">
-        <% if Helper.is_logged_in?(session) %>
-          <% @current_user = Helper.current_user(session) %>
-          <p>You're logged in as: <a href='/users/<%= @current_user.id %>'><%= @current_user.username %></a>.</p>
-          <p><a href='/users/logout'>Log out</a></p>
-        <% else %>
-          <p><a href='/users/login'>Log in</a></p>
-          <p><a href='/users/new'>Sign up</a></p>
-        <% end %>
-        </div>
-      </div>
-      <br>
-      <br>
-      <br>
-      <br>
-
-
 
       <%= yield %>
 

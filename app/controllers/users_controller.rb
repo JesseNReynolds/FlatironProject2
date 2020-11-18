@@ -74,6 +74,10 @@ class UsersController < ApplicationController
 
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
+    user = Helper.current_user(session)
+    user_books = Books.all.select {|b| b.user_id == user.id}
+    user_books.delete_all
+    user.delete
     redirect "/welcome"
   end
   
