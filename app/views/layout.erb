@@ -17,16 +17,20 @@
       
       <% if Helper.is_logged_in?(session) %>
         <% @current_user = Helper.current_user(session) %>
-      <div>
+      <div class="navCard">
       My Trade Library
       </div>
-      <div>
+      <div class="navCard">
+      My Messages
       </div>
-      <div>
+      <div class="navCard">
+      Books for trade by others
       </div>
-      <div id="userTab">
-        <p>You're logged in as: <a href='/users/<%= @current_user.id %>'><%= @current_user.username %></a>.</p>
-        <p><a href='/users/logout'>Log out</a></p>
+      <div class="navCard">
+        You're logged in as: <a href='/users/<%= @current_user.id %>'> <%= @current_user.username %></a>.
+      </div>
+      <div class="navCard">
+        <a href='/users/logout'>Log out</a>
       </div>
 
       <% else %>
@@ -35,6 +39,7 @@
         <p><a href='/users/new'>Sign up</a></p>
       </div>
       <% end %>
+
     </div>
 
   </head>

@@ -111,15 +111,32 @@
     margin: 5px;
   }
 
-  #userTab {
+  .navWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background-color: #214778;
+    justify-content: space-around;
+    min-height: 40px;
+  }
+
+  .navCard {
+    align-self: center; 
+    text-align: center;
+    height: 100%;
+    color: burlywood;
+    text-emphasis: bold;
+    font-size: large;
+  }
+
+  /* #userTab {
     border: 1px solid grey;
-    border-radius: 5px;
     padding: 10px;
     padding-bottom: 0px;
     margin: 5px;
     line-height: .2;
     text-align: right;
-  }
+  } */
 
 }
 
