@@ -1,5 +1,9 @@
 <h1>Your conversations</h1>
 <br>
+
+<a href='/messages/new' class='newMessage'>Send new message</a>
+<hr>
+<br>
 <% @conversations.each do |key, value|%>
     <a href='/messages/<%= key %>' class='conversationLink'>Conversation with <%= User.find(key).username %></a>
 <% end%>

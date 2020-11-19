@@ -140,7 +140,15 @@
     text-decoration: none;
     color: #214778;
     text-emphasis: bold;
-    font-size: larger;
+    font-size: large;
+  }
+
+  .newMessage{
+    display: inline-block;
+    text-decoration: none;
+    color: #214778;
+    text-emphasis: bold;
+    font-size: 26px;
   }
 
   .conversationLink:hover{
