@@ -18,7 +18,7 @@
       <% if Helper.is_logged_in?(session) %>
         <% @current_user = Helper.current_user(session) %>
         <a href='/users/my_library' class="navCard">My Trade Library</a>
-        <a href='/users/<%= @current_user.id %>/messages' class="navCard">My Messages</a>
+        <a href='/messages' class="navCard">My Messages</a>
         <a href='/users/others/books' class="navCard">Books for Trade by Others</a>
         <a href='/users/<%= @current_user.id %>' class="navCard">Account</a>
         <a href='/users/logout' class="navCard">Log out</a>

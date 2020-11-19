@@ -1,4 +1,3 @@
-require_relative './helper.rb'
 class UsersController < ApplicationController
 
   # GET: /users

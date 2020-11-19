@@ -1,1 +1,5 @@
-<h1>This is the Model's index page.</h1>
+<h1>Your conversations</h1>
+<br>
+<% @conversations.each do |key, value|%>
+    <a href='/messages/<%= key %>' class='conversationLink'>Conversation with <%= User.find(key).username %></a>
+<% end%>

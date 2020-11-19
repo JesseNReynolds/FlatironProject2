@@ -2,7 +2,12 @@ class MessagesController < ApplicationController
 
   # GET: /messages
   get "/messages" do
-    erb :"/messages/index"
+    if Helper.is_logged_in?(session)
+      @conversations = Message.user_conversations(session)
+      erb :"/messages/index"
+    else
+      "You must be logged in to view messages."
+    end
   end
 
   # GET: /messages/new

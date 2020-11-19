@@ -136,5 +136,16 @@
     /* background-color: #164683; */
   }
 
+  .conversationLink{
+    text-decoration: none;
+    color: #214778;
+    text-emphasis: bold;
+    font-size: larger;
+  }
+
+  .conversationLink:hover{
+    color: #226dcd;
+  }
+
 }
 
