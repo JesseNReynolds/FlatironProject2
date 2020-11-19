@@ -4,6 +4,7 @@ require 'bundler/setup'
 require 'http'
 require 'net/http'
 require 'json'
+require 'date'
 
 Bundler.require(:default, ENV['SINATRA_ENV'])
 

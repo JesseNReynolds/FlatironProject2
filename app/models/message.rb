@@ -30,5 +30,9 @@ class Message < ActiveRecord::Base
         return conversations
     end
 
+    def self.sorted_single_conversation(session:, other_user_id:)
+        Message.user_conversations(session)[other_user_id.to_i].sort_by{|m| m.created_at }
+    end
+
     
 end

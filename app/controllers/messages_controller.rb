@@ -21,7 +21,10 @@ class MessagesController < ApplicationController
   end
 
   # GET: /messages/5
+  # Likely needs a refactor to save back-end resources
   get "/messages/:id" do
+    @other_user = User.find(params[:id])
+    @conversation = Message.sorted_single_conversation(session: session, other_user_id: params[:id])
     erb :"/messages/show"
   end
 

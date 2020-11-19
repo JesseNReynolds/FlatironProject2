@@ -155,5 +155,45 @@
     color: #226dcd;
   }
 
+  .conversationWrapper{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .messageWrapper{
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+
+  .recievedMessage{
+    align-self: flex-start;
+    max-width: 80%;
+  }
+
+  .sentMessage{
+    max-width: 80%;
+    align-self: flex-end;
+  }
+
+  .newMessageForm{
+    float: right;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+
+  .newMessageForm textarea{
+    resize: none;
+    width: 98%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sendButton{
+   float: right;
+  }
+
+
 }
 
