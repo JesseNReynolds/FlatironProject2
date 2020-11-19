@@ -1,5 +1,10 @@
-<h1>Insert the form to create a new instance of your model.</h1>
-<form method='POST' action='/messages'>
-    <textarea rows='5' cols='50' name='message[content]'></textarea>
-    <input type='submit' value='Send' class="sendButton">
-</form>
+<div class="newMessageForm">
+    <form method='POST' action='/messages'>
+    <label>To:
+        <input type='text' name='message[to_username]'>
+        </label>
+        <br>
+        <textarea rows='5' cols='500' name='message[content]'></textarea>
+        <input type='submit' value='Send' class="sendButton">
+    </form>
+</div>

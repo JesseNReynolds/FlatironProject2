@@ -2,6 +2,13 @@
     <h1><%= @book.title %></h1>
     <h3><%= @book.author %><h3>
     <p><%= @book.published %></p>
-    <h5>In <a href='/users/<%= @owner.id %>'><%= @owner.username %>'s</a> trade-library.</h3>
+    <h3>In <a href='/users/<%= @owner.id %>'><%= @owner.username %>'s</a> trade-library.</h3>
+    <div class="newMessageForm">
+    <p>Send <%= @owner.username %> a message to arrange a swap:</p>
+    <form method='POST' action='/messages/<%= @owner.id %>'>
+        <textarea rows='5' cols='500' name='message[content]'></textarea>
+        <input type='submit' value='Send' class="sendButton">
+    </form>
+    </div>
 </div>
 

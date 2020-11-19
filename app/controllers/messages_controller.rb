@@ -16,9 +16,21 @@ class MessagesController < ApplicationController
   end
 
   # POST: /messages
-  post "/messages" do
-    redirect "/messages"
+  post "/messages/:id" do
+    Message.create({:content => params[:message][:content], :sender_id => Helper.current_user(session).id, :recipient_id => params[:id]})
+    redirect "/messages/#{params[:id]}"
   end
+
+  post "/messages" do
+    if recipient = User.find_by(:username => params[:message][:to_username])
+      Message.create({:content => params[:message][:content], :sender_id => Helper.current_user(session).id, :recipient_id => recipient.id})
+      redirect "/messages/#{recipient.id}"
+    else
+      "Sorry, I couldn't find a user with that username, please try again."
+    end
+    
+  end
+
 
   # GET: /messages/5
   # Likely needs a refactor to save back-end resources
@@ -28,18 +40,4 @@ class MessagesController < ApplicationController
     erb :"/messages/show"
   end
 
-  # GET: /messages/5/edit
-  get "/messages/:id/edit" do
-    erb :"/messages/edit"
-  end
-
-  # PATCH: /messages/5
-  patch "/messages/:id" do
-    redirect "/messages/:id"
-  end
-
-  # DELETE: /messages/5/delete
-  delete "/messages/:id/delete" do
-    redirect "/messages"
-  end
 end

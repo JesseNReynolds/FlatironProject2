@@ -194,6 +194,9 @@
    float: right;
   }
 
+  .messageTimestamp{
+    text-align: right;
+  }
 
 }
 
