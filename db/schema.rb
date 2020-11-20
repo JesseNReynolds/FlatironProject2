@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20201116202638) do
     t.integer  "recipient_id"
     t.datetime "created_at"
     t.text     "content"
+    t.boolean  "read"
   end
 
   create_table "users", force: :cascade do |t|

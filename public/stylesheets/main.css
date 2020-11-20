@@ -151,6 +151,10 @@
     font-size: 26px;
   }
 
+  .newMessage:hover{
+    color: #226dcd;
+  }
+  
   .conversationLink:hover{
     color: #226dcd;
   }
@@ -159,6 +163,12 @@
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+  }
+
+  .notifyUnread{
+    color: red;
+    font-weight: bolder;
+    display: inline;
   }
 
   .messageWrapper{

@@ -1,1 +1,2 @@
-
+I would like to add logic to help users manage trades, but that will have to wait until another time.
+In order to run locally, create a file in main directory named hash.rb and define the global variable $HASH to reference a secure hash as a string. 

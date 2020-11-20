@@ -5,5 +5,15 @@
 <hr>
 <br>
 <% @conversations.each do |key, value|%>
-    <a href='/messages/<%= key %>' class='conversationLink'>Conversation with <%= User.find(key).username %></a>
+    <% read = true  %>
+    <% value.each do |m| %>
+        <% if m.read == false %>
+        <% read = false %>
+        <% end %>
+    <% end %>
+    <%if !read %>
+        <a href='/messages/<%= key %>' class='conversationLink'>Conversation with <%= User.find(key).username %> <p class='notifyUnread'>contains new messages</p></a>
+    <% else %>
+        <a href='/messages/<%= key %>' class='conversationLink'>Conversation with <%= User.find(key).username %>
+    <% end%>
 <% end%>
