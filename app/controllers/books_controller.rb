@@ -2,8 +2,13 @@ class BooksController < ApplicationController
 
   # GET: /books
   get "/books" do
-    @books = Book.all
-    erb :"/books/index"
+    if Helper.is_logged_in?(session)
+      @books = Book.all
+      erb :"/books/index"
+    else
+      @error = "Please log in to view books."
+      erb :'/error'
+    end
   end
 
   # GET: /books/new
@@ -11,24 +16,27 @@ class BooksController < ApplicationController
     if Helper.is_logged_in?(session)
       erb :"/books/new"
     else
-      "Please log in to add a book to your trade-library."
+      erb :'/error'
+      @error = "Please log in to add a book to your trade-library."
     end
   end
 
   # POST: /books
   post "/books" do
-    # hash_to_pass = params[:book]
-    # hash_to_pass["user_id"] = session[:user_id]
-    # new_book = Book.create(hash_to_pass)
     Helper.current_user(session).books.build(params[:book]).save
     redirect "/books"
   end
 
   # GET: /books/5
   get "/books/:id" do
-    @book = Book.find(params[:id])
-    @owner = User.find(@book.user_id)
-    erb :"/books/show"
+    if Helper.is_logged_in?(session)
+      @book = Book.find(params[:id])
+      @owner = User.find(@book.user_id)
+      erb :"/books/show"
+    else
+      @error = "Please log in to view books."
+      erb :'/error'
+    end
   end
 
   # GET: /books/5/edit
@@ -37,7 +45,8 @@ class BooksController < ApplicationController
     if @book.user_id == Helper.current_user(session).id
       erb :"/books/edit"
     else
-      "You can't edit books you don't own."
+      @error = "You can't edit books you don't own."
+      erb :"/error"
     end
   end
 
@@ -52,7 +61,8 @@ class BooksController < ApplicationController
     if @book.user_id == Helper.current_user(session).id
       erb :"/books/delete"
     else
-      "You cannot delete books you don't own."
+      @error = "You cannot delete books you don't own."
+      erb :"/error"
     end
 
   end
@@ -63,9 +73,4 @@ class BooksController < ApplicationController
     redirect "/books"
   end
   
-  # get "/users/:id/books" do
-  #   @books = Book.all
-  #   erb :"/users/books"
-  # end
-
 end

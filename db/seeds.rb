@@ -11,7 +11,7 @@ User.create(username: "JLPicard", password: "test")
 
 
 
-Book.create(title: "Baseball: An Illustraated History", author: "Geoffrey C. Ward", published: "1996", user_id: 1)
+Book.create(title: "Baseball: An Illustrated History", author: "Geoffrey C. Ward", published: "1996", user_id: 1)
 Book.create(title: "Baseball Scorekeeping: A Practical Guide to the Rules", author: "Andres Wirkmaa", published: "2010", user_id: 1)
 Book.create(title: "Malcolm X Speaks: Selected Speeches and Statements", author: "George Breitman", published: "1990", user_id: 1)
 Book.create(title: "Comparative Religion", author: "Kedar Nath Tiwari", published: "2014", user_id: 2)

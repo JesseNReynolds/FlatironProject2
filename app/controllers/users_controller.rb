@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   end
 
   get "/users/login" do
-
     erb :"/users/login"
   end
 
@@ -22,7 +21,8 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/users/#{user.id}"
     else
-      "Login error, unknown username and/or password."
+      @error = "Login error, unknown username and/or password."
+      erb :'/error'
     end
   end
 
@@ -34,11 +34,14 @@ class UsersController < ApplicationController
   # POST: /users
   post "/users" do
     if !params[:email].include?("@")
-      "Sorry, that doesn't look like an email address."
+      @error = "Sorry, that doesn't look like an email address."
+      erb :'/error'
     elsif User.find_by_email(params[:email])
-      "That email is already in use."
+      @error = "That email is already in use."
+      erb :'/error'
     elsif User.find_by_username(params[:username])
-      "That username is already in use."
+      @error = "That username is already in use."
+      erb :'/error'
     else
       user = User.create(params)
       session[:user_id] = user.id
@@ -57,7 +60,8 @@ class UsersController < ApplicationController
       @library = Book.all.select{|b| b.user_id == Helper.current_user(session).id}
       erb :"/users/my_library"
     else
-      "You must log in to view your library."
+      @error = "You must log in to view your library."
+      erb :'/error'
     end
 
   end
@@ -65,6 +69,11 @@ class UsersController < ApplicationController
   get "/users/others/books" do
     @other_users_books = Book.all.select{|b| b.user_id != Helper.current_user(session).id}
     erb :"/users/available_books"
+  end
+  
+  get "/users/delete" do
+    @user = Helper.current_user(session)
+    erb :"/users/delete"
   end
   
   # GET: /users/5
@@ -94,11 +103,5 @@ class UsersController < ApplicationController
     user.delete
     redirect "/welcome"
   end
-  
-  get "/users/:id/delete" do
-    @user = Helper.current_user(session)
-    erb :"/users/delete"
-  end
-
 
 end

@@ -1,15 +1,14 @@
 <div class='bookOverviewContainer'>
     <% @books.each do |b|%>
-        <div class="bookOverviewCard"> 
-        <h3><%= b.title %></h3>
+    <% if b.user_id == Helper.current_user(session).id %>
+        <a class='bookOverviewCard owned'href='/books/<%= b.id %>/edit'>
+    <% else %>
+        <a class='bookOverviewCard'href='/books/<%= b.id %>'>
+    <% end %>
+        <h3 class='bookTitle'><%= b.title %></h3>
         <h5>By: <%= b.author %></h5>
         <h5>Published: <%= b.published %></h5>
-        <h5>Owned by: <%= User.find(b.user_id).username %>
-        <% if b.user_id == Helper.current_user(session).id %>
-            <a href='/books/<%= b.id %>/edit'>Edit this book</a>
-        <% else %>
-            <a href='/books/<%= b.id %>'>View this book</a>
-        <% end %>
-        </div>
+        <h5>Owned by: <%= User.find(b.user_id).username %></h5>
+        </a>
     <% end %>
 </div>

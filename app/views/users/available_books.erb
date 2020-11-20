@@ -1,12 +1,11 @@
 <h1>Books for trade by others</h1>
 <div class='bookOverviewContainer'>
     <% @other_users_books.each do |b|%>
-        <div class="bookOverviewCard"> 
-        <h3><%= b.title %></h3>
+        <a class="bookOverviewCard" href='/books/<%= b.id %>'>
+        <h3 class='bookTitle'><%= b.title %></h3>
         <h5>By: <%= b.author %></h5>
         <h5>Published: <%= b.published %></h5>
-        <h5>Owned by: <%= User.find(b.user_id).username %>
-        <p><a href='/books/<%= b.id %>'>View this book</a></p>
-        </div>
+        <h5>Owned by: <%= User.find(b.user_id).username %></h5>
+        </a>
     <% end %>
 </div>
