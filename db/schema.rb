@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20201116202638) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.string "mailing_address"
   end
 
 end

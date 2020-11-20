@@ -69,7 +69,7 @@ class UsersController < ApplicationController
   
   # GET: /users/5
   get "/users/:id" do
-    @user = User.find(params[:id])
+    @user = Helper.current_user(session)
     @user_books = Book.all.select{|b| b.user_id == @user.id}
     if @user.id == Helper.current_user(session).id
       erb :"/users/my_account"
