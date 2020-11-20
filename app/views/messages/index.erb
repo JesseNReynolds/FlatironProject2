@@ -7,7 +7,7 @@
 <% @conversations.each do |key, value|%>
     <% read = true  %>
     <% value.each do |m| %>
-        <% if m.read == false %>
+        <% if m.recipient_id == @current_user.id && m.read == false %>
         <% read = false %>
         <% end %>
     <% end %>

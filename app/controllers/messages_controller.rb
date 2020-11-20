@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
   # GET: /messages
   get "/messages" do
     if Helper.is_logged_in?(session)
+      @current_user = Helper.current_user(session)
       @conversations = Message.user_conversations(session)
       erb :"/messages/index"
     else
@@ -35,7 +36,9 @@ class MessagesController < ApplicationController
   # Likely needs a refactor to save back-end resources
   get "/messages/:id" do
     @other_user = User.find(params[:id])
-    @conversation = Message.sorted_single_conversation(session: session, other_user_id: params[:id]).each{|m| m.read = true}
+    @current_user = Helper.current_user(session)
+    @conversation = Message.sorted_single_conversation(session: session, other_user_id: params[:id])
+    Message.check_and_mark_read(array_of_messages: @conversation, current_user: @current_user)
     erb :"/messages/show"
   end
 

@@ -34,5 +34,17 @@ class Message < ActiveRecord::Base
         Message.user_conversations(session)[other_user_id.to_i].sort_by{|m| m.created_at }
     end
 
+    def self.check_and_mark_read(array_of_messages:, current_user:)
+        
+        array_of_messages.each do |m| 
+            if m.read == false
+                if m.recipient_id == current_user.id 
+                    m.update(read: true)
+                end
+            end
+        end
+       
+    end
+
     
 end
