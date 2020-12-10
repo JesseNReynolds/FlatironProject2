@@ -71,9 +71,14 @@ class UsersController < ApplicationController
     erb :"/users/available_books"
   end
   
-  get "/users/delete" do
+  get "/users/:id/delete" do
     @user = Helper.current_user(session)
-    erb :"/users/delete"
+    if @user.id == params[:id].to_i
+      erb :"/users/delete"
+    else
+      @error = "You may only delete your own account."
+      erb :"/error"
+    end
   end
   
   # GET: /users/5
